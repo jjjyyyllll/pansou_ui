@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PanSou - 网盘资源搜索</title>
+    <link rel="icon" href="/favicon.svg">
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🔍 PanSou</h1>
+        <p>高性能网盘资源搜索引擎 - 支持多平台并发搜索</p>
+    </div>
+
+    <div class="search-section">
+        <form class="search-form" onsubmit="handleSearch(event)">
+            <input type="text" class="search-input" id="searchInput" placeholder="请输入搜索关键词，如：速度与激情" required>
+            <button type="submit" class="search-btn" id="searchBtn">搜索</button>
+        </form>
+
+        <div class="advanced-options">
+            <button class="options-toggle" onclick="toggleOptions()">
+                <span id="optionsToggleText">▼ 高级选项</span>
+            </button>
+            <div class="options-content" id="optionsContent">
+                <div class="option-group">
+                    <label for="sourceSelect">数据来源:</label>
+                    <select id="sourceSelect">
+                        <option value="all">全部来源</option>
+                        <option value="tg">仅Telegram</option>
+                        <option value="plugin">仅插件</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="resultType">结果类型:</label>
+                    <select id="resultType">
+                        <option value="merge">按类型合并</option>
+                        <option value="results">详细结果</option>
+                        <option value="all">全部数据</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="concurrency">并发数:</label>
+                    <input type="number" id="concurrency" min="1" max="20" value="10">
+                </div>
+                <div class="option-group">
+                    <div class="checkbox-group">
+                        <input class="custom-checkbox" type="checkbox" id="refreshCache">
+                        <label class="custom-checkbox-label" for="refreshCache">强制刷新缓存</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-section" id="resultsSection">
+        <div class="results-header">
+            <div class="results-count" id="resultsCount">找到 0 个结果</div>
+            <div class="filter-tabs" id="filterTabs">
+            </div>
+        </div>
+
+        <div class="platform-icons" id="platformIcons"></div>
+
+        <div class="results-grid" id="resultsGrid"></div>
+    </div>
+</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
