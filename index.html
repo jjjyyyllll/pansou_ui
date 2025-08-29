@@ -68,6 +68,33 @@
     </div>
 </div>
 
+<!-- 页脚信息区 -->
+<footer class="footer-info">
+    <div id="apiInfoWidget" class="footer-widget">
+        <span class="status-indicator loading">检查中...</span>
+        <div id="currentApiDisplay">
+            <!-- API 地址将由 JS 动态更新 -->
+        </div>
+    </div>
+
+    <div class="footer-widget api-custom-widget">
+        <input type="text" id="customApiInput" placeholder="输入临时API地址">
+        <!-- 应用新的通用按钮样式 -->
+        <button id="applyApiBtn" class="footer-btn">应用</button>
+    </div>
+
+    <div class="footer-widget platform-list" id="platformList">
+        <div class="platform-list-header">
+            <span>支持平台:</span>
+            <!-- 应用新的通用按钮样式 -->
+            <button id="platformToggleBtn" class="footer-btn">显示</button>
+        </div>
+        <div class="platform-tags-container" id="platformTagsContainer">
+            <!-- 平台列表将由JS动态生成 -->
+        </div>
+    </div>
+</footer>
+
 <script type="module" src="./src/main.js"></script>
 </body>
 </html>

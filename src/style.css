@@ -11,6 +11,7 @@ body {
     color: #333;
     overflow-x: hidden;
     width: 100%;
+    padding-bottom: 100px;
 }
 
 .container {
@@ -389,62 +390,194 @@ body {
     opacity: 0.3;
 }
 
-/* 响应式设计优化 */
+
+/* --- 页脚样式 (已优化) --- */
+.footer-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+    padding: 5px 20px;
+    font-size: 13px;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5px 15px;
+    z-index: 1000;
+}
+
+.footer-widget {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    margin-top: 2px;
+}
+
+#apiInfoWidget {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 5px 10px;
+    gap: 10px;
+    min-width: 0;
+}
+
+#currentApiDisplay {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#currentApiDisplay .api-url-text {
+    font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+    color: #764ba2;
+    background-color: #ede7f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.api-custom-widget {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 300px;
+    max-width: 100%;
+}
+
+.api-custom-widget input {
+    flex-grow: 1;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 12px;
+    min-width: 100px;
+}
+
+/* 平台列表样式 */
+.platform-list {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.platform-list-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 新增: 通用页脚按钮样式 */
+.footer-btn {
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    line-height: 1.5; /* 确保高度一致 */
+}
+
+.footer-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* 分别为按钮设置颜色 */
+#applyApiBtn {
+    background-color: #667eea;
+}
+#applyApiBtn:hover {
+    background-color: #5a6ed8;
+}
+
+#platformToggleBtn {
+    background: #7d5ab5;
+}
+#platformToggleBtn:hover {
+    background-color: #6a4c9c;
+}
+
+
+/* 可折叠的平台标签容器 */
+.platform-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 8px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, margin-top 0.4s ease-in-out;
+}
+
+.platform-tags-container.visible {
+    max-height: 100px;
+    opacity: 1;
+}
+
+.platform-tags-container span {
+    background-color: #e9ecef;
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.status-indicator {
+    padding: 4px 8px;
+    border-radius: 100px;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.status-indicator.loading { background: #faad14; }
+.status-indicator.online { background: #52c41a; }
+.status-indicator.offline { background: #f5222d; }
+
+
+/* --- 响应式设计优化 --- */
 @media (max-width: 768px) {
-    .container {
-        padding: 10px;
+    body {
+        padding-bottom: 200px;
     }
+    .container { padding: 10px; }
+    .search-form { flex-direction: column; }
+    .search-input { min-width: unset; }
+    .results-grid { grid-template-columns: 1fr; }
+    .filter-tabs { justify-content: flex-start; }
+    .results-header { flex-direction: column; align-items: stretch; }
+    .platform-icons { justify-content: center; }
 
-    .search-form {
-        flex-direction: column;
-    }
-
-    .search-input {
-        min-width: unset;
-    }
-
-    .results-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .filter-tabs {
-        justify-content: flex-start;
-    }
-
-    .results-header {
+    .footer-info {
         flex-direction: column;
         align-items: stretch;
     }
-
-    .platform-icons {
-        justify-content: center;
+    .footer-widget {
+        width: 100%;
+        justify-content: flex-start;
     }
+    #apiInfoWidget {
+        width: 100%;
+    }
+    .api-custom-widget { flex-basis: auto; }
 }
 
-/* 小屏幕优化 */
 @media (max-width: 480px) {
-    .search-section {
-        padding: 20px;
-    }
-
-    .results-section {
-        padding: 20px;
-    }
-
-    .results-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .result-card {
-        padding: 15px;
-    }
-
-    .filter-tabs {
-        font-size: 12px;
-    }
-
-    .platform-icon {
-        min-width: 60px;
-        padding: 8px 10px;
-    }
+    .search-section, .results-section { padding: 20px; }
+    .result-card { padding: 15px; }
+    .filter-tabs { font-size: 12px; }
+    .platform-icon { min-width: 60px; padding: 8px 10px; }
 }
