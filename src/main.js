@@ -3,7 +3,7 @@ let currentFilter = 'all';
 
 // 默认API地址
 // const DEFAULT_API_BASE = 'https://so.252035.xyz/api';
-const DEFAULT_API_BASE = 'http://129.151.148.117:8890/api';
+const DEFAULT_API_BASE = 'http://129.151.148.117/api';
 
 // 当前会话使用的API地址，默认为默认地址
 let currentApiBase = DEFAULT_API_BASE;
